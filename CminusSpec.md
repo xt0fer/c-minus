@@ -30,7 +30,7 @@ this is a std 32-bit Integer.
 
 ### Boolean Class
 
-var canDrive [= bool([initialer])]<eos>
+var canDrive [= boolean([initialer])]<eos>
 
 boolean variable, boolean literals True, False.
 
@@ -48,7 +48,7 @@ literals are a run of Runes delimited by double-quotes
 ### Rune (Character) 
 
 Rune is a 32-bit char
-let weird = rune('x') // var also works
+var weird = rune('x') // var also works
 
 literals are either UTF-8 or hex literals
 
@@ -58,8 +58,8 @@ Void is the null type, like nil is the null reference
 
 ### Array
 
-let scores = array.int(42)
-let flags = array.bool(8)
+var scores = array.int(42)
+var flags = array.bool(8)
 
 while 'scores' cannot change, the contents of 'scores' can.
 
@@ -110,7 +110,7 @@ return [ret-value]<eos>
 
 ## Function 
 
-func name(type param,) type-return {
+function name(type param,) type-return {
     [local Variables]
 
     [statements]
