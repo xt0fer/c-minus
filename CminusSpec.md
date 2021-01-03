@@ -14,7 +14,8 @@ comments are // stuff... <eol>
 
 ### var
 
-var implies it might change and be mutable
+var implies it might change and be mutable. vars must be within a function (or main) scope.
+
 
 ### Integers
 
@@ -113,7 +114,29 @@ func name(type param,) type-return {
     return [ret-value?]
 }
 
-<!-- ### Map Class
+## Main 
+
+main() is the entry point for cminus programs. 
+
+example:
+
+main() {
+    print("Hello World.")
+}
+
+## Print & Input
+
+print() prints a string on standard output.
+
+input() requests a string (line) from standard input.
+
+error() prints a string (line) on standard error.
+
+That's All, Folks!
+
+## Maybe someday.
+
+<!-- ### Map type
 
 let symbols = Map[Key-Type]Value-Type
 
