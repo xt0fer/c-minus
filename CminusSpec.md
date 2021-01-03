@@ -4,7 +4,7 @@ quick and probably not self-consistent. designed to make the compiler really sim
 
 ##  Comments
 
-comments are // stuff... <eol>
+comments are // stuff... <eos>
 
 ## Variables
 
@@ -16,10 +16,13 @@ comments are // stuff... <eol>
 
 var implies it might change and be mutable. vars must be within a function (or main) scope.
 
+### simple statement ends (<eos>)
+
+semi-colon will be the end of statement char
 
 ### Integers
 
-var j [= Int(k)]<eol>
+var j [= int(k)]<eos>
 
 int literals 42 (decimal) and 0x12FF (hexadecimal)
 
@@ -27,25 +30,25 @@ this is a std 32-bit Integer.
 
 ### Boolean Class
 
-var canDrive [= Bool([initialer])]<eol>
+var canDrive [= bool([initialer])]<eos>
 
 boolean variable, boolean literals True, False.
 
 ### String 
 
-var address [= String("another string")]<eol>
+var address [= string("another string")]<eos>
 
 String is immuable.
 literals are a run of Runes delimited by double-quotes
 
-- append(String s) String
-- runeAt(Int idx) Rune
-- length() Int
+- append(string s) string
+- runeAt(int idx) rune
+- length() int
 
 ### Rune (Character) 
 
 Rune is a 32-bit char
-let weird = Rune('x') // var also works
+let weird = rune('x') // var also works
 
 literals are either UTF-8 or hex literals
 
@@ -55,12 +58,12 @@ Void is the null type, like nil is the null reference
 
 ### Array
 
-let scores = Array.Int(42)
-let flags = Array.Bool(8)
+let scores = array.int(42)
+let flags = array.bool(8)
 
 while 'scores' cannot change, the contents of 'scores' can.
 
-idx is of type Int
+idx is of type int
 
 scores.set(ids, value)
 
@@ -70,7 +73,7 @@ x = score.get(idx)
 
 standard boolean and arithmetic Expressions
 
-AND, OR, NOT - boolean conjunctions(?)
+&&, ||, ~ - boolean conjunctions(?)
 ==, !=, >=, >, <, <=  normal comparisons
 
 ( ) ^ * / + - %    standard operators
@@ -79,7 +82,7 @@ AND, OR, NOT - boolean conjunctions(?)
 
 assignment statement
 
-x = x + 1<eol>
+x = x + 1<eos>
 
 ## Conditional statement
 
@@ -101,9 +104,9 @@ while condition {
 
 ## Loop breakers
 
-break<eol>
-continue<eol>
-return [ret-value]<eol>
+break<eos>
+continue<eos>
+return [ret-value]<eos>
 
 ## Function 
 
