@@ -1,5 +1,5 @@
-/* cminus */
-grammar cminus;
+/* Cminus */
+grammar Cminus;
 
 program
     : statementList 

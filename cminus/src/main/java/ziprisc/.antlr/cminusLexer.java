@@ -1,4 +1,4 @@
-// Generated from /home/kristofer/p/c-minus/cminus/cminus.g4 by ANTLR 4.8
+// Generated from /home/kristofer/p/c-minus/cminus/cminus/src/main/java/ziprisc/Cminus.g4 by ANTLR 4.8
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.Token;
@@ -117,7 +117,7 @@ public class cminusLexer extends Lexer {
 	}
 
 	@Override
-	public String getGrammarFileName() { return "cminus.g4"; }
+	public String getGrammarFileName() { return "Cminus.g4"; }
 
 	@Override
 	public String[] getRuleNames() { return ruleNames; }
