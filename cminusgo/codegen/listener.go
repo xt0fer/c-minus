@@ -11,5 +11,8 @@ type CminusListener struct {
 }
 
 func (c *CminusListener)  EnterEveryRule(ctx antlr.ParserRuleContext) {
-	fmt.Printf("ctx Text:<<%s>>\n", ctx.GetText())
+	fmt.Printf("Enter ctx Text:<<%s>>\n", ctx.GetText())
+}
+func (c *CminusListener)  ExitEveryRule(ctx antlr.ParserRuleContext) {
+	fmt.Printf("Exit ctx Text:<<%s>>\n", ctx.GetText())
 }

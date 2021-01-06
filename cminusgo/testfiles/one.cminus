@@ -1,6 +1,9 @@
 main() {
  var x = int(0);
  var y = int(42);
-var z = int(0);
- z = x + y;
+ var z = int(0);
+
+ z = (x + y);
 }
+
+// function add() {}

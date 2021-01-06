@@ -22,16 +22,32 @@ func main() {
 		panic("input file not found " + inputFilename+ " CWD is "+path)
 	}
 	is := antlr.NewInputStream(string(fileContents))
+	fmt.Println("// *** input: "+inputFilename)
 
+	fmt.Println("// *** Create the Lexer")
 	// Create the Lexer
 	lexer := parser.NewcminusLexer(is)
 	stream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
 
+	// for {
+	// 	t := lexer.NextToken()
+	// 	if t.GetTokenType() == antlr.TokenEOF {
+	// 		break
+	// 	}
+	// 	fmt.Printf("%s (%q)\n",
+	// 		lexer.SymbolicNames[t.GetTokenType()], t.GetText())
+	// }
+
+	// after this loop, the stream is EMPTY!
+
+	fmt.Println("// *** Create the Parser")
 	// Create the Parser
 	p := parser.NewcminusParser(stream)
 	
-	tree := p.Program()
+	//fmt.Println("// *** Program")
+	//tree := p.Program()
 
+	fmt.Println("// *** ParseTreeWalkerDefault.Walk")
 	// Finally parse the expression
-	antlr.ParseTreeWalkerDefault.Walk(&codegen.CminusListener{}, tree)
+	antlr.ParseTreeWalkerDefault.Walk(&codegen.CminusListener{}, p.Program())
 }

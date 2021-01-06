@@ -2,7 +2,7 @@
 grammar cminus;
 
 program
-    : mainFunction functionList? 
+    : mainFunction functionList?
     ;
     
 functionList
@@ -11,7 +11,7 @@ functionList
     ;
     
 mainFunction
-    : 'main' Paren paramList? Thesis typeSpecifier? compoundStatement
+    : Main Paren paramList? Thesis typeSpecifier? compoundStatement
     ;
 
 functionDefinition
@@ -51,70 +51,62 @@ blockItemList
     ;
 
 blockItem
-    :   statement
-    |   declaration
+    :   statementList
+    |   declarationList
     ;
 
 declaration
-    : 'var' Identifier '=' typeSpecifier '(' Constant ')' ';'
+    : Var Identifier Assign typeSpecifier Paren Constant Thesis Semi
     ;
 
 expressionStatement
-    :   expression? ';'
+    :   expression Semi
     ;
 
 selectionStatement
-    :   'if' '(' expression ')' statement ('else' statement)?
+    :   If Paren expression Thesis compoundStatement (Else compoundStatement)?
     ;
 
 iterationStatement
-    :   While '(' expression ')' statement
+    :   While Paren expression Thesis compoundStatement
     ;
+
 jumpStatement
-    :   'continue' ';'
-    |   'break' ';'
-    |   'return' expression? ';'
+    :   'continue' Semi
+    |   'break' Semi
+    |   'return' expression? Semi
     ;
 
-unaryOperator
-    :   '&' | '*' | '+' | '-' | '~' | '!'
+// primaryExpression
+//     :   Identifier
+//     |   Constant
+//     |   StringLiteral+
+//     ;
+
+expression 
+    : Minus expression     
+    | expression mulop expression 
+    | expression addop expression 
+    | Paren expression Thesis
+    | Constant      
     ;
 
-primaryExpression
-    :   Identifier
-    |   Constant
-    |   StringLiteral+
-    |   '(' expression ')'
-    ;
+addop : Plus | Minus ;
 
-expression : '-' expression     
-   | expression mulop expression 
-   | expression addop expression 
-   | '(' expression ')'   
-   | Constant      
-   ;
-
-addop : '+' | '-' ;
-
-mulop : '*' | '/' | '%' ;
+mulop : Star | Div | Mod ;
 
 conditionalExpression
     :   logicalOrExpression ('?' expression ':' conditionalExpression)?
     ;
 
-assignmentExpression
-    :   conditionalExpression
-    |   DigitSequence // for
-    ;
+// assignmentExpression
+// //    :   conditionalExpression
+//     :  Identifier assignmentOperator assignmentExpression
+//     ;
 
 assignmentOperator
     :   '=' // | '*=' | '/=' | '%=' | '+=' | '-=' | '<<=' | '>>=' | '&=' | '^=' | '|='
     ;
-
-// expression
-//     :   assignmentExpression
-//     |   expression ',' assignmentExpression
-//     ;
 
 constantExpression
     :   conditionalExpression
@@ -199,6 +191,7 @@ Break : 'break';
 Continue : 'continue';
 Else : 'else';
 If : 'if';
+Var : 'var';
 Int : 'int';
 Bool : 'boolean';
 StringType : 'string';
@@ -208,6 +201,7 @@ Return : 'return';
 Void : 'void';
 While : 'while';
 Func : 'function';
+Main : 'main';
 True : 'true';
 False : 'false';
 
@@ -249,10 +243,7 @@ Comma : ',';
 Assign : '=';
 
 Identifier
-    :   IdentifierNondigit
-        (   IdentifierNondigit
-        |   Digit
-        )*
+    :   IdentifierNondigit ( IdentifierNondigit | Digit )*
     ;
     
 fragment

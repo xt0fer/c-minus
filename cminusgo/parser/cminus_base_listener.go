@@ -39,6 +39,12 @@ func (s *BasecminusListener) EnterMainFunction(ctx *MainFunctionContext) {}
 // ExitMainFunction is called when production mainFunction is exited.
 func (s *BasecminusListener) ExitMainFunction(ctx *MainFunctionContext) {}
 
+// EnterFunctionDefinition is called when production functionDefinition is entered.
+func (s *BasecminusListener) EnterFunctionDefinition(ctx *FunctionDefinitionContext) {}
+
+// ExitFunctionDefinition is called when production functionDefinition is exited.
+func (s *BasecminusListener) ExitFunctionDefinition(ctx *FunctionDefinitionContext) {}
+
 // EnterStatementList is called when production statementList is entered.
 func (s *BasecminusListener) EnterStatementList(ctx *StatementListContext) {}
 
@@ -111,18 +117,6 @@ func (s *BasecminusListener) EnterJumpStatement(ctx *JumpStatementContext) {}
 // ExitJumpStatement is called when production jumpStatement is exited.
 func (s *BasecminusListener) ExitJumpStatement(ctx *JumpStatementContext) {}
 
-// EnterUnaryOperator is called when production unaryOperator is entered.
-func (s *BasecminusListener) EnterUnaryOperator(ctx *UnaryOperatorContext) {}
-
-// ExitUnaryOperator is called when production unaryOperator is exited.
-func (s *BasecminusListener) ExitUnaryOperator(ctx *UnaryOperatorContext) {}
-
-// EnterPrimaryExpression is called when production primaryExpression is entered.
-func (s *BasecminusListener) EnterPrimaryExpression(ctx *PrimaryExpressionContext) {}
-
-// ExitPrimaryExpression is called when production primaryExpression is exited.
-func (s *BasecminusListener) ExitPrimaryExpression(ctx *PrimaryExpressionContext) {}
-
 // EnterExpression is called when production expression is entered.
 func (s *BasecminusListener) EnterExpression(ctx *ExpressionContext) {}
 
@@ -146,12 +140,6 @@ func (s *BasecminusListener) EnterConditionalExpression(ctx *ConditionalExpressi
 
 // ExitConditionalExpression is called when production conditionalExpression is exited.
 func (s *BasecminusListener) ExitConditionalExpression(ctx *ConditionalExpressionContext) {}
-
-// EnterAssignmentExpression is called when production assignmentExpression is entered.
-func (s *BasecminusListener) EnterAssignmentExpression(ctx *AssignmentExpressionContext) {}
-
-// ExitAssignmentExpression is called when production assignmentExpression is exited.
-func (s *BasecminusListener) ExitAssignmentExpression(ctx *AssignmentExpressionContext) {}
 
 // EnterAssignmentOperator is called when production assignmentOperator is entered.
 func (s *BasecminusListener) EnterAssignmentOperator(ctx *AssignmentOperatorContext) {}
@@ -218,12 +206,6 @@ func (s *BasecminusListener) EnterTypeSpecifier(ctx *TypeSpecifierContext) {}
 
 // ExitTypeSpecifier is called when production typeSpecifier is exited.
 func (s *BasecminusListener) ExitTypeSpecifier(ctx *TypeSpecifierContext) {}
-
-// EnterFunctionDefinition is called when production functionDefinition is entered.
-func (s *BasecminusListener) EnterFunctionDefinition(ctx *FunctionDefinitionContext) {}
-
-// ExitFunctionDefinition is called when production functionDefinition is exited.
-func (s *BasecminusListener) ExitFunctionDefinition(ctx *FunctionDefinitionContext) {}
 
 // EnterParamList is called when production paramList is entered.
 func (s *BasecminusListener) EnterParamList(ctx *ParamListContext) {}

@@ -17,6 +17,9 @@ type cminusListener interface {
 	// EnterMainFunction is called when entering the mainFunction production.
 	EnterMainFunction(c *MainFunctionContext)
 
+	// EnterFunctionDefinition is called when entering the functionDefinition production.
+	EnterFunctionDefinition(c *FunctionDefinitionContext)
+
 	// EnterStatementList is called when entering the statementList production.
 	EnterStatementList(c *StatementListContext)
 
@@ -53,12 +56,6 @@ type cminusListener interface {
 	// EnterJumpStatement is called when entering the jumpStatement production.
 	EnterJumpStatement(c *JumpStatementContext)
 
-	// EnterUnaryOperator is called when entering the unaryOperator production.
-	EnterUnaryOperator(c *UnaryOperatorContext)
-
-	// EnterPrimaryExpression is called when entering the primaryExpression production.
-	EnterPrimaryExpression(c *PrimaryExpressionContext)
-
 	// EnterExpression is called when entering the expression production.
 	EnterExpression(c *ExpressionContext)
 
@@ -70,9 +67,6 @@ type cminusListener interface {
 
 	// EnterConditionalExpression is called when entering the conditionalExpression production.
 	EnterConditionalExpression(c *ConditionalExpressionContext)
-
-	// EnterAssignmentExpression is called when entering the assignmentExpression production.
-	EnterAssignmentExpression(c *AssignmentExpressionContext)
 
 	// EnterAssignmentOperator is called when entering the assignmentOperator production.
 	EnterAssignmentOperator(c *AssignmentOperatorContext)
@@ -107,9 +101,6 @@ type cminusListener interface {
 	// EnterTypeSpecifier is called when entering the typeSpecifier production.
 	EnterTypeSpecifier(c *TypeSpecifierContext)
 
-	// EnterFunctionDefinition is called when entering the functionDefinition production.
-	EnterFunctionDefinition(c *FunctionDefinitionContext)
-
 	// EnterParamList is called when entering the paramList production.
 	EnterParamList(c *ParamListContext)
 
@@ -124,6 +115,9 @@ type cminusListener interface {
 
 	// ExitMainFunction is called when exiting the mainFunction production.
 	ExitMainFunction(c *MainFunctionContext)
+
+	// ExitFunctionDefinition is called when exiting the functionDefinition production.
+	ExitFunctionDefinition(c *FunctionDefinitionContext)
 
 	// ExitStatementList is called when exiting the statementList production.
 	ExitStatementList(c *StatementListContext)
@@ -161,12 +155,6 @@ type cminusListener interface {
 	// ExitJumpStatement is called when exiting the jumpStatement production.
 	ExitJumpStatement(c *JumpStatementContext)
 
-	// ExitUnaryOperator is called when exiting the unaryOperator production.
-	ExitUnaryOperator(c *UnaryOperatorContext)
-
-	// ExitPrimaryExpression is called when exiting the primaryExpression production.
-	ExitPrimaryExpression(c *PrimaryExpressionContext)
-
 	// ExitExpression is called when exiting the expression production.
 	ExitExpression(c *ExpressionContext)
 
@@ -178,9 +166,6 @@ type cminusListener interface {
 
 	// ExitConditionalExpression is called when exiting the conditionalExpression production.
 	ExitConditionalExpression(c *ConditionalExpressionContext)
-
-	// ExitAssignmentExpression is called when exiting the assignmentExpression production.
-	ExitAssignmentExpression(c *AssignmentExpressionContext)
 
 	// ExitAssignmentOperator is called when exiting the assignmentOperator production.
 	ExitAssignmentOperator(c *AssignmentOperatorContext)
@@ -214,9 +199,6 @@ type cminusListener interface {
 
 	// ExitTypeSpecifier is called when exiting the typeSpecifier production.
 	ExitTypeSpecifier(c *TypeSpecifierContext)
-
-	// ExitFunctionDefinition is called when exiting the functionDefinition production.
-	ExitFunctionDefinition(c *FunctionDefinitionContext)
 
 	// ExitParamList is called when exiting the paramList production.
 	ExitParamList(c *ParamListContext)
