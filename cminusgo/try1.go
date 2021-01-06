@@ -19,7 +19,7 @@ func main() {
 	inputFilename := "testfiles/one.cminus"
 	fileContents, err := ioutil.ReadFile(inputFilename)
 	if (err != nil){
-		panic("input file not found " + inputFilename+ " dir is "+path)
+		panic("input file not found " + inputFilename+ " CWD is "+path)
 	}
 	is := antlr.NewInputStream(string(fileContents))
 
