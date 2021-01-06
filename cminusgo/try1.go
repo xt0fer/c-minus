@@ -1,19 +1,19 @@
 package main
 
-// antlr -Dlanguage=Go -o parser gminus.g4
+// antlr4 -Dlanguage=Go -o parser cminus.g4
 
 import (
+	"fmt"
 	"github.com/xt0fer/cminus/parser"
+	"github.com/xt0fer/cminus/codegen"
+
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
-type cminusListener struct {
-	*parser.BasecminusListener
-}
-
 func main() {
+	fmt.Println("// *** cminus v1.0")
 	// Setup the input
-	is := antlr.NewInputStream("while (5) { ; }")
+	is := antlr.NewInputStream("var x = int(0); ;")
 
 	// Create the Lexer
 	lexer := parser.NewcminusLexer(is)
@@ -25,5 +25,5 @@ func main() {
 	tree := p.Program()
 
 	// Finally parse the expression
-	antlr.ParseTreeWalkerDefault.Walk(&cminusListener{}, tree)
+	antlr.ParseTreeWalkerDefault.Walk(&codegen.CminusListener{}, tree)
 }

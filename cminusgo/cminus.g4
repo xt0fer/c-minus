@@ -2,7 +2,7 @@
 grammar cminus;
 
 program
-    : statementList 
+    : declarationList statementList 
     ;
     
 statementList
