@@ -27,6 +27,18 @@ func (s *BasecminusListener) EnterProgram(ctx *ProgramContext) {}
 // ExitProgram is called when production program is exited.
 func (s *BasecminusListener) ExitProgram(ctx *ProgramContext) {}
 
+// EnterFunctionList is called when production functionList is entered.
+func (s *BasecminusListener) EnterFunctionList(ctx *FunctionListContext) {}
+
+// ExitFunctionList is called when production functionList is exited.
+func (s *BasecminusListener) ExitFunctionList(ctx *FunctionListContext) {}
+
+// EnterMainFunction is called when production mainFunction is entered.
+func (s *BasecminusListener) EnterMainFunction(ctx *MainFunctionContext) {}
+
+// ExitMainFunction is called when production mainFunction is exited.
+func (s *BasecminusListener) ExitMainFunction(ctx *MainFunctionContext) {}
+
 // EnterStatementList is called when production statementList is entered.
 func (s *BasecminusListener) EnterStatementList(ctx *StatementListContext) {}
 

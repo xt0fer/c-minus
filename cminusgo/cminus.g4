@@ -2,9 +2,22 @@
 grammar cminus;
 
 program
-    : declarationList statementList 
+    : mainFunction functionList? 
     ;
     
+functionList
+    : functionDefinition
+    | functionList functionDefinition
+    ;
+    
+mainFunction
+    : 'main' Paren paramList? Thesis typeSpecifier? compoundStatement
+    ;
+
+functionDefinition
+    :  Func Identifier Paren paramList Thesis typeSpecifier compoundStatement
+    ;
+
 statementList
     : statement
     | statementList statement
@@ -173,11 +186,6 @@ typeSpecifier
     |   Bool
     ;
 
-
-// NOT RIGHT
-functionDefinition
-    :  Func Identifier Paren paramList Thesis typeSpecifier compoundStatement
-    ;
 
 paramList
     : param

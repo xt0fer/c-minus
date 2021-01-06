@@ -4,6 +4,8 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
+	"os"
 	"github.com/xt0fer/cminus/parser"
 	"github.com/xt0fer/cminus/codegen"
 
@@ -13,7 +15,13 @@ import (
 func main() {
 	fmt.Println("// *** cminus v1.0")
 	// Setup the input
-	is := antlr.NewInputStream("var x = int(0); ;")
+	path, err := os.Getwd()
+	inputFilename := "testfiles/one.cminus"
+	fileContents, err := ioutil.ReadFile(inputFilename)
+	if (err != nil){
+		panic("input file not found " + inputFilename+ " dir is "+path)
+	}
+	is := antlr.NewInputStream(string(fileContents))
 
 	// Create the Lexer
 	lexer := parser.NewcminusLexer(is)

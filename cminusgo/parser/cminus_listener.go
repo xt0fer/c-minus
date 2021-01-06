@@ -11,6 +11,12 @@ type cminusListener interface {
 	// EnterProgram is called when entering the program production.
 	EnterProgram(c *ProgramContext)
 
+	// EnterFunctionList is called when entering the functionList production.
+	EnterFunctionList(c *FunctionListContext)
+
+	// EnterMainFunction is called when entering the mainFunction production.
+	EnterMainFunction(c *MainFunctionContext)
+
 	// EnterStatementList is called when entering the statementList production.
 	EnterStatementList(c *StatementListContext)
 
@@ -112,6 +118,12 @@ type cminusListener interface {
 
 	// ExitProgram is called when exiting the program production.
 	ExitProgram(c *ProgramContext)
+
+	// ExitFunctionList is called when exiting the functionList production.
+	ExitFunctionList(c *FunctionListContext)
+
+	// ExitMainFunction is called when exiting the mainFunction production.
+	ExitMainFunction(c *MainFunctionContext)
 
 	// ExitStatementList is called when exiting the statementList production.
 	ExitStatementList(c *StatementListContext)
