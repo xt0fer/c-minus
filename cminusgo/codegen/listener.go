@@ -8,11 +8,15 @@ import (
 
 type CminusListener struct {
 	*parser.BasecminusListener
+	GlobalRuleNames []string
 }
 
 func (c *CminusListener)  EnterEveryRule(ctx antlr.ParserRuleContext) {
-	fmt.Printf("Enter ctx Text:<<%s>>\n", ctx.GetText())
+	ruleNum := ctx.GetRuleIndex()
+	//parser := ctx.Parser
+	fmt.Printf("Enter ctx RuleNum: %d Text:<<%s>> Rule: %+v\n", 
+		ruleNum, ctx.GetText(), c.GlobalRuleNames[ruleNum])
 }
 func (c *CminusListener)  ExitEveryRule(ctx antlr.ParserRuleContext) {
-	fmt.Printf("Exit ctx Text:<<%s>>\n", ctx.GetText())
+	//fmt.Printf("Exit ctx Text:<<%s>>\n", ctx.GetText())
 }

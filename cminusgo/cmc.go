@@ -6,8 +6,9 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"github.com/xt0fer/cminus/parser"
+
 	"github.com/xt0fer/cminus/codegen"
+	"github.com/xt0fer/cminus/parser"
 
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
@@ -16,13 +17,13 @@ func main() {
 	fmt.Println("// *** cminus v1.0")
 	// Setup the input
 	path, err := os.Getwd()
-	inputFilename := "testfiles/one.cminus"
+	inputFilename := "testfiles/two.cminus"
 	fileContents, err := ioutil.ReadFile(inputFilename)
-	if (err != nil){
-		panic("input file not found " + inputFilename+ " CWD is "+path)
+	if err != nil {
+		panic("input file not found " + inputFilename + " CWD is " + path)
 	}
 	is := antlr.NewInputStream(string(fileContents))
-	fmt.Println("// *** input: "+inputFilename)
+	fmt.Println("// *** input: " + inputFilename)
 
 	fmt.Println("// *** Create the Lexer")
 	// Create the Lexer
@@ -43,11 +44,13 @@ func main() {
 	fmt.Println("// *** Create the Parser")
 	// Create the Parser
 	p := parser.NewcminusParser(stream)
-	
+
 	//fmt.Println("// *** Program")
 	//tree := p.Program()
 
+	ruleNames := p.RuleNames
 	fmt.Println("// *** ParseTreeWalkerDefault.Walk")
 	// Finally parse the expression
-	antlr.ParseTreeWalkerDefault.Walk(&codegen.CminusListener{}, p.Program())
+
+	antlr.ParseTreeWalkerDefault.Walk(&codegen.CminusListener{GlobalRuleNames: ruleNames}, p.Program())
 }

@@ -16,15 +16,15 @@ public class cminusLexer extends Lexer {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, T__1=2, Break=3, Continue=4, Else=5, If=6, Var=7, Int=8, Bool=9, 
-		StringType=10, Rune=11, Array=12, Return=13, Void=14, While=15, Func=16, 
-		Main=17, True=18, False=19, Paren=20, Thesis=21, LeftBracket=22, RightBracket=23, 
-		LeftBrace=24, RightBrace=25, Less=26, LessEqual=27, Greater=28, GreaterEqual=29, 
-		LeftShift=30, RightShift=31, Plus=32, PlusPlus=33, Minus=34, MinusMinus=35, 
-		Star=36, Div=37, Mod=38, And=39, Or=40, AndAnd=41, OrOr=42, Caret=43, 
-		Not=44, Tilde=45, Question=46, Colon=47, Semi=48, Comma=49, Assign=50, 
-		Identifier=51, Constant=52, DigitSequence=53, StringLiteral=54, Whitespace=55, 
-		Newline=56, BlockComment=57, LineComment=58;
+		Break=1, Continue=2, Else=3, If=4, Var=5, Int=6, Bool=7, StringType=8, 
+		Rune=9, Array=10, Return=11, Void=12, While=13, Func=14, Main=15, True=16, 
+		False=17, Paren=18, Thesis=19, LeftBracket=20, RightBracket=21, LeftBrace=22, 
+		RightBrace=23, EqualEqual=24, NotEqual=25, Less=26, LessEqual=27, Greater=28, 
+		GreaterEqual=29, LeftShift=30, RightShift=31, Plus=32, PlusPlus=33, Minus=34, 
+		MinusMinus=35, Star=36, Div=37, Mod=38, And=39, Or=40, AndAnd=41, OrOr=42, 
+		Caret=43, Not=44, Tilde=45, Question=46, Colon=47, Semi=48, Comma=49, 
+		Assign=50, Identifier=51, Constant=52, DigitSequence=53, StringLiteral=54, 
+		Whitespace=55, Newline=56, BlockComment=57, LineComment=58;
 	public static String[] channelNames = {
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN"
 	};
@@ -35,45 +35,47 @@ public class cminusLexer extends Lexer {
 
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"T__0", "T__1", "Break", "Continue", "Else", "If", "Var", "Int", "Bool", 
-			"StringType", "Rune", "Array", "Return", "Void", "While", "Func", "Main", 
-			"True", "False", "Paren", "Thesis", "LeftBracket", "RightBracket", "LeftBrace", 
-			"RightBrace", "Less", "LessEqual", "Greater", "GreaterEqual", "LeftShift", 
-			"RightShift", "Plus", "PlusPlus", "Minus", "MinusMinus", "Star", "Div", 
-			"Mod", "And", "Or", "AndAnd", "OrOr", "Caret", "Not", "Tilde", "Question", 
-			"Colon", "Semi", "Comma", "Assign", "Identifier", "IdentifierNondigit", 
-			"Nondigit", "Digit", "UniversalCharacterName", "HexQuad", "Constant", 
-			"IntegerConstant", "BinaryConstant", "BooleanConstant", "DecimalConstant", 
-			"OctalConstant", "HexadecimalConstant", "HexadecimalPrefix", "NonzeroDigit", 
-			"OctalDigit", "HexadecimalDigit", "Sign", "DigitSequence", "HexadecimalDigitSequence", 
-			"CharacterConstant", "CCharSequence", "CChar", "EscapeSequence", "SimpleEscapeSequence", 
-			"OctalEscapeSequence", "HexadecimalEscapeSequence", "StringLiteral", 
-			"SCharSequence", "SChar", "Whitespace", "Newline", "BlockComment", "LineComment"
+			"Break", "Continue", "Else", "If", "Var", "Int", "Bool", "StringType", 
+			"Rune", "Array", "Return", "Void", "While", "Func", "Main", "True", "False", 
+			"Paren", "Thesis", "LeftBracket", "RightBracket", "LeftBrace", "RightBrace", 
+			"EqualEqual", "NotEqual", "Less", "LessEqual", "Greater", "GreaterEqual", 
+			"LeftShift", "RightShift", "Plus", "PlusPlus", "Minus", "MinusMinus", 
+			"Star", "Div", "Mod", "And", "Or", "AndAnd", "OrOr", "Caret", "Not", 
+			"Tilde", "Question", "Colon", "Semi", "Comma", "Assign", "Identifier", 
+			"IdentifierNondigit", "Nondigit", "Digit", "UniversalCharacterName", 
+			"HexQuad", "Constant", "IntegerConstant", "BinaryConstant", "BooleanConstant", 
+			"DecimalConstant", "OctalConstant", "HexadecimalConstant", "HexadecimalPrefix", 
+			"NonzeroDigit", "OctalDigit", "HexadecimalDigit", "Sign", "DigitSequence", 
+			"HexadecimalDigitSequence", "CharacterConstant", "CCharSequence", "CChar", 
+			"EscapeSequence", "SimpleEscapeSequence", "OctalEscapeSequence", "HexadecimalEscapeSequence", 
+			"StringLiteral", "SCharSequence", "SChar", "Whitespace", "Newline", "BlockComment", 
+			"LineComment"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
 
 	private static String[] makeLiteralNames() {
 		return new String[] {
-			null, "'=='", "'!='", "'break'", "'continue'", "'else'", "'if'", "'var'", 
-			"'int'", "'boolean'", "'string'", "'rune'", "'array'", "'return'", "'void'", 
-			"'while'", "'function'", "'main'", "'true'", "'false'", "'('", "')'", 
-			"'['", "']'", "'{'", "'}'", "'<'", "'<='", "'>'", "'>='", "'<<'", "'>>'", 
-			"'+'", "'++'", "'-'", "'--'", "'*'", "'/'", "'%'", "'&'", "'|'", "'&&'", 
-			"'||'", "'^'", "'!'", "'~'", "'?'", "':'", "';'", "','", "'='"
+			null, "'break'", "'continue'", "'else'", "'if'", "'var'", "'int'", "'boolean'", 
+			"'string'", "'rune'", "'array'", "'return'", "'void'", "'while'", "'function'", 
+			"'main'", "'true'", "'false'", "'('", "')'", "'['", "']'", "'{'", "'}'", 
+			"'=='", "'!='", "'<'", "'<='", "'>'", "'>='", "'<<'", "'>>'", "'+'", 
+			"'++'", "'-'", "'--'", "'*'", "'/'", "'%'", "'&'", "'|'", "'&&'", "'||'", 
+			"'^'", "'!'", "'~'", "'?'", "':'", "';'", "','", "'='"
 		};
 	}
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, null, null, "Break", "Continue", "Else", "If", "Var", "Int", "Bool", 
-			"StringType", "Rune", "Array", "Return", "Void", "While", "Func", "Main", 
-			"True", "False", "Paren", "Thesis", "LeftBracket", "RightBracket", "LeftBrace", 
-			"RightBrace", "Less", "LessEqual", "Greater", "GreaterEqual", "LeftShift", 
-			"RightShift", "Plus", "PlusPlus", "Minus", "MinusMinus", "Star", "Div", 
-			"Mod", "And", "Or", "AndAnd", "OrOr", "Caret", "Not", "Tilde", "Question", 
-			"Colon", "Semi", "Comma", "Assign", "Identifier", "Constant", "DigitSequence", 
-			"StringLiteral", "Whitespace", "Newline", "BlockComment", "LineComment"
+			null, "Break", "Continue", "Else", "If", "Var", "Int", "Bool", "StringType", 
+			"Rune", "Array", "Return", "Void", "While", "Func", "Main", "True", "False", 
+			"Paren", "Thesis", "LeftBracket", "RightBracket", "LeftBrace", "RightBrace", 
+			"EqualEqual", "NotEqual", "Less", "LessEqual", "Greater", "GreaterEqual", 
+			"LeftShift", "RightShift", "Plus", "PlusPlus", "Minus", "MinusMinus", 
+			"Star", "Div", "Mod", "And", "Or", "AndAnd", "OrOr", "Caret", "Not", 
+			"Tilde", "Question", "Colon", "Semi", "Comma", "Assign", "Identifier", 
+			"Constant", "DigitSequence", "StringLiteral", "Whitespace", "Newline", 
+			"BlockComment", "LineComment"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -145,32 +147,32 @@ public class cminusLexer extends Lexer {
 		"\64\4\65\t\65\4\66\t\66\4\67\t\67\48\t8\49\t9\4:\t:\4;\t;\4<\t<\4=\t="+
 		"\4>\t>\4?\t?\4@\t@\4A\tA\4B\tB\4C\tC\4D\tD\4E\tE\4F\tF\4G\tG\4H\tH\4I"+
 		"\tI\4J\tJ\4K\tK\4L\tL\4M\tM\4N\tN\4O\tO\4P\tP\4Q\tQ\4R\tR\4S\tS\4T\tT"+
-		"\4U\tU\3\2\3\2\3\2\3\3\3\3\3\3\3\4\3\4\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\5"+
-		"\3\5\3\5\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\b\3\b\3\b\3\b\3"+
-		"\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\n\3\13\3\13\3\13\3\13\3\13"+
-		"\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\r\3\r\3\r\3\r\3\r\3\r\3\16\3\16\3\16"+
-		"\3\16\3\16\3\16\3\16\3\17\3\17\3\17\3\17\3\17\3\20\3\20\3\20\3\20\3\20"+
-		"\3\20\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\21\3\22\3\22\3\22\3\22"+
-		"\3\22\3\23\3\23\3\23\3\23\3\23\3\24\3\24\3\24\3\24\3\24\3\24\3\25\3\25"+
-		"\3\26\3\26\3\27\3\27\3\30\3\30\3\31\3\31\3\32\3\32\3\33\3\33\3\34\3\34"+
-		"\3\34\3\35\3\35\3\36\3\36\3\36\3\37\3\37\3\37\3 \3 \3 \3!\3!\3\"\3\"\3"+
-		"\"\3#\3#\3$\3$\3$\3%\3%\3&\3&\3\'\3\'\3(\3(\3)\3)\3*\3*\3*\3+\3+\3+\3"+
-		",\3,\3-\3-\3.\3.\3/\3/\3\60\3\60\3\61\3\61\3\62\3\62\3\63\3\63\3\64\3"+
-		"\64\3\64\7\64\u015f\n\64\f\64\16\64\u0162\13\64\3\65\3\65\5\65\u0166\n"+
-		"\65\3\66\3\66\3\67\3\67\38\38\38\38\38\38\38\38\38\38\58\u0176\n8\39\3"+
-		"9\39\39\39\3:\3:\5:\u017f\n:\3;\3;\3;\3;\3;\5;\u0186\n;\3<\3<\3<\6<\u018b"+
-		"\n<\r<\16<\u018c\3=\3=\5=\u0191\n=\3>\3>\7>\u0195\n>\f>\16>\u0198\13>"+
-		"\3?\3?\7?\u019c\n?\f?\16?\u019f\13?\3@\3@\6@\u01a3\n@\r@\16@\u01a4\3A"+
-		"\3A\3A\3B\3B\3C\3C\3D\3D\3E\3E\3F\6F\u01b3\nF\rF\16F\u01b4\3G\6G\u01b8"+
-		"\nG\rG\16G\u01b9\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3"+
-		"H\3H\3H\3H\3H\5H\u01d2\nH\3I\6I\u01d5\nI\rI\16I\u01d6\3J\3J\5J\u01db\n"+
-		"J\3K\3K\3K\3K\5K\u01e1\nK\3L\3L\3L\3M\3M\3M\3M\3M\3M\3M\3M\3M\3M\3M\5"+
-		"M\u01f1\nM\3N\3N\3N\3N\6N\u01f7\nN\rN\16N\u01f8\3O\3O\5O\u01fd\nO\3O\3"+
-		"O\3P\6P\u0202\nP\rP\16P\u0203\3Q\3Q\3Q\3Q\3Q\3Q\3Q\5Q\u020d\nQ\3R\6R\u0210"+
-		"\nR\rR\16R\u0211\3R\3R\3S\3S\5S\u0218\nS\3S\5S\u021b\nS\3S\3S\3T\3T\3"+
-		"T\3T\7T\u0223\nT\fT\16T\u0226\13T\3T\3T\3T\3T\3T\3U\3U\3U\3U\7U\u0231"+
-		"\nU\fU\16U\u0234\13U\3U\3U\3\u0224\2V\3\3\5\4\7\5\t\6\13\7\r\b\17\t\21"+
-		"\n\23\13\25\f\27\r\31\16\33\17\35\20\37\21!\22#\23%\24\'\25)\26+\27-\30"+
+		"\4U\tU\3\2\3\2\3\2\3\2\3\2\3\2\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\3\4"+
+		"\3\4\3\4\3\4\3\4\3\5\3\5\3\5\3\6\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\b\3\b\3"+
+		"\b\3\b\3\b\3\b\3\b\3\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t\3\n\3\n\3\n\3\n\3\n"+
+		"\3\13\3\13\3\13\3\13\3\13\3\13\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\r\3\r\3\r"+
+		"\3\r\3\r\3\16\3\16\3\16\3\16\3\16\3\16\3\17\3\17\3\17\3\17\3\17\3\17\3"+
+		"\17\3\17\3\17\3\20\3\20\3\20\3\20\3\20\3\21\3\21\3\21\3\21\3\21\3\22\3"+
+		"\22\3\22\3\22\3\22\3\22\3\23\3\23\3\24\3\24\3\25\3\25\3\26\3\26\3\27\3"+
+		"\27\3\30\3\30\3\31\3\31\3\31\3\32\3\32\3\32\3\33\3\33\3\34\3\34\3\34\3"+
+		"\35\3\35\3\36\3\36\3\36\3\37\3\37\3\37\3 \3 \3 \3!\3!\3\"\3\"\3\"\3#\3"+
+		"#\3$\3$\3$\3%\3%\3&\3&\3\'\3\'\3(\3(\3)\3)\3*\3*\3*\3+\3+\3+\3,\3,\3-"+
+		"\3-\3.\3.\3/\3/\3\60\3\60\3\61\3\61\3\62\3\62\3\63\3\63\3\64\3\64\3\64"+
+		"\7\64\u015f\n\64\f\64\16\64\u0162\13\64\3\65\3\65\5\65\u0166\n\65\3\66"+
+		"\3\66\3\67\3\67\38\38\38\38\38\38\38\38\38\38\58\u0176\n8\39\39\39\39"+
+		"\39\3:\3:\5:\u017f\n:\3;\3;\3;\3;\3;\5;\u0186\n;\3<\3<\3<\6<\u018b\n<"+
+		"\r<\16<\u018c\3=\3=\5=\u0191\n=\3>\3>\7>\u0195\n>\f>\16>\u0198\13>\3?"+
+		"\3?\7?\u019c\n?\f?\16?\u019f\13?\3@\3@\6@\u01a3\n@\r@\16@\u01a4\3A\3A"+
+		"\3A\3B\3B\3C\3C\3D\3D\3E\3E\3F\6F\u01b3\nF\rF\16F\u01b4\3G\6G\u01b8\n"+
+		"G\rG\16G\u01b9\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3H\3"+
+		"H\3H\3H\3H\5H\u01d2\nH\3I\6I\u01d5\nI\rI\16I\u01d6\3J\3J\5J\u01db\nJ\3"+
+		"K\3K\3K\3K\5K\u01e1\nK\3L\3L\3L\3M\3M\3M\3M\3M\3M\3M\3M\3M\3M\3M\5M\u01f1"+
+		"\nM\3N\3N\3N\3N\6N\u01f7\nN\rN\16N\u01f8\3O\3O\5O\u01fd\nO\3O\3O\3P\6"+
+		"P\u0202\nP\rP\16P\u0203\3Q\3Q\3Q\3Q\3Q\3Q\3Q\5Q\u020d\nQ\3R\6R\u0210\n"+
+		"R\rR\16R\u0211\3R\3R\3S\3S\5S\u0218\nS\3S\5S\u021b\nS\3S\3S\3T\3T\3T\3"+
+		"T\7T\u0223\nT\fT\16T\u0226\13T\3T\3T\3T\3T\3T\3U\3U\3U\3U\7U\u0231\nU"+
+		"\fU\16U\u0234\13U\3U\3U\3\u0224\2V\3\3\5\4\7\5\t\6\13\7\r\b\17\t\21\n"+
+		"\23\13\25\f\27\r\31\16\33\17\35\20\37\21!\22#\23%\24\'\25)\26+\27-\30"+
 		"/\31\61\32\63\33\65\34\67\359\36;\37= ?!A\"C#E$G%I&K\'M(O)Q*S+U,W-Y.["+
 		"/]\60_\61a\62c\63e\64g\65i\2k\2m\2o\2q\2s\66u\2w\2y\2{\2}\2\177\2\u0081"+
 		"\2\u0083\2\u0085\2\u0087\2\u0089\2\u008b\67\u008d\2\u008f\2\u0091\2\u0093"+
@@ -188,12 +190,12 @@ public class cminusLexer extends Lexer {
 		"\2\2W\3\2\2\2\2Y\3\2\2\2\2[\3\2\2\2\2]\3\2\2\2\2_\3\2\2\2\2a\3\2\2\2\2"+
 		"c\3\2\2\2\2e\3\2\2\2\2g\3\2\2\2\2s\3\2\2\2\2\u008b\3\2\2\2\2\u009d\3\2"+
 		"\2\2\2\u00a3\3\2\2\2\2\u00a5\3\2\2\2\2\u00a7\3\2\2\2\2\u00a9\3\2\2\2\3"+
-		"\u00ab\3\2\2\2\5\u00ae\3\2\2\2\7\u00b1\3\2\2\2\t\u00b7\3\2\2\2\13\u00c0"+
-		"\3\2\2\2\r\u00c5\3\2\2\2\17\u00c8\3\2\2\2\21\u00cc\3\2\2\2\23\u00d0\3"+
-		"\2\2\2\25\u00d8\3\2\2\2\27\u00df\3\2\2\2\31\u00e4\3\2\2\2\33\u00ea\3\2"+
-		"\2\2\35\u00f1\3\2\2\2\37\u00f6\3\2\2\2!\u00fc\3\2\2\2#\u0105\3\2\2\2%"+
-		"\u010a\3\2\2\2\'\u010f\3\2\2\2)\u0115\3\2\2\2+\u0117\3\2\2\2-\u0119\3"+
-		"\2\2\2/\u011b\3\2\2\2\61\u011d\3\2\2\2\63\u011f\3\2\2\2\65\u0121\3\2\2"+
+		"\u00ab\3\2\2\2\5\u00b1\3\2\2\2\7\u00ba\3\2\2\2\t\u00bf\3\2\2\2\13\u00c2"+
+		"\3\2\2\2\r\u00c6\3\2\2\2\17\u00ca\3\2\2\2\21\u00d2\3\2\2\2\23\u00d9\3"+
+		"\2\2\2\25\u00de\3\2\2\2\27\u00e4\3\2\2\2\31\u00eb\3\2\2\2\33\u00f0\3\2"+
+		"\2\2\35\u00f6\3\2\2\2\37\u00ff\3\2\2\2!\u0104\3\2\2\2#\u0109\3\2\2\2%"+
+		"\u010f\3\2\2\2\'\u0111\3\2\2\2)\u0113\3\2\2\2+\u0115\3\2\2\2-\u0117\3"+
+		"\2\2\2/\u0119\3\2\2\2\61\u011b\3\2\2\2\63\u011e\3\2\2\2\65\u0121\3\2\2"+
 		"\2\67\u0123\3\2\2\29\u0126\3\2\2\2;\u0128\3\2\2\2=\u012b\3\2\2\2?\u012e"+
 		"\3\2\2\2A\u0131\3\2\2\2C\u0133\3\2\2\2E\u0136\3\2\2\2G\u0138\3\2\2\2I"+
 		"\u013b\3\2\2\2K\u013d\3\2\2\2M\u013f\3\2\2\2O\u0141\3\2\2\2Q\u0143\3\2"+
@@ -208,39 +210,39 @@ public class cminusLexer extends Lexer {
 		"\2\2\u0097\u01e2\3\2\2\2\u0099\u01f0\3\2\2\2\u009b\u01f2\3\2\2\2\u009d"+
 		"\u01fa\3\2\2\2\u009f\u0201\3\2\2\2\u00a1\u020c\3\2\2\2\u00a3\u020f\3\2"+
 		"\2\2\u00a5\u021a\3\2\2\2\u00a7\u021e\3\2\2\2\u00a9\u022c\3\2\2\2\u00ab"+
-		"\u00ac\7?\2\2\u00ac\u00ad\7?\2\2\u00ad\4\3\2\2\2\u00ae\u00af\7#\2\2\u00af"+
-		"\u00b0\7?\2\2\u00b0\6\3\2\2\2\u00b1\u00b2\7d\2\2\u00b2\u00b3\7t\2\2\u00b3"+
-		"\u00b4\7g\2\2\u00b4\u00b5\7c\2\2\u00b5\u00b6\7m\2\2\u00b6\b\3\2\2\2\u00b7"+
-		"\u00b8\7e\2\2\u00b8\u00b9\7q\2\2\u00b9\u00ba\7p\2\2\u00ba\u00bb\7v\2\2"+
-		"\u00bb\u00bc\7k\2\2\u00bc\u00bd\7p\2\2\u00bd\u00be\7w\2\2\u00be\u00bf"+
-		"\7g\2\2\u00bf\n\3\2\2\2\u00c0\u00c1\7g\2\2\u00c1\u00c2\7n\2\2\u00c2\u00c3"+
-		"\7u\2\2\u00c3\u00c4\7g\2\2\u00c4\f\3\2\2\2\u00c5\u00c6\7k\2\2\u00c6\u00c7"+
-		"\7h\2\2\u00c7\16\3\2\2\2\u00c8\u00c9\7x\2\2\u00c9\u00ca\7c\2\2\u00ca\u00cb"+
-		"\7t\2\2\u00cb\20\3\2\2\2\u00cc\u00cd\7k\2\2\u00cd\u00ce\7p\2\2\u00ce\u00cf"+
-		"\7v\2\2\u00cf\22\3\2\2\2\u00d0\u00d1\7d\2\2\u00d1\u00d2\7q\2\2\u00d2\u00d3"+
-		"\7q\2\2\u00d3\u00d4\7n\2\2\u00d4\u00d5\7g\2\2\u00d5\u00d6\7c\2\2\u00d6"+
-		"\u00d7\7p\2\2\u00d7\24\3\2\2\2\u00d8\u00d9\7u\2\2\u00d9\u00da\7v\2\2\u00da"+
-		"\u00db\7t\2\2\u00db\u00dc\7k\2\2\u00dc\u00dd\7p\2\2\u00dd\u00de\7i\2\2"+
-		"\u00de\26\3\2\2\2\u00df\u00e0\7t\2\2\u00e0\u00e1\7w\2\2\u00e1\u00e2\7"+
-		"p\2\2\u00e2\u00e3\7g\2\2\u00e3\30\3\2\2\2\u00e4\u00e5\7c\2\2\u00e5\u00e6"+
-		"\7t\2\2\u00e6\u00e7\7t\2\2\u00e7\u00e8\7c\2\2\u00e8\u00e9\7{\2\2\u00e9"+
-		"\32\3\2\2\2\u00ea\u00eb\7t\2\2\u00eb\u00ec\7g\2\2\u00ec\u00ed\7v\2\2\u00ed"+
-		"\u00ee\7w\2\2\u00ee\u00ef\7t\2\2\u00ef\u00f0\7p\2\2\u00f0\34\3\2\2\2\u00f1"+
-		"\u00f2\7x\2\2\u00f2\u00f3\7q\2\2\u00f3\u00f4\7k\2\2\u00f4\u00f5\7f\2\2"+
-		"\u00f5\36\3\2\2\2\u00f6\u00f7\7y\2\2\u00f7\u00f8\7j\2\2\u00f8\u00f9\7"+
-		"k\2\2\u00f9\u00fa\7n\2\2\u00fa\u00fb\7g\2\2\u00fb \3\2\2\2\u00fc\u00fd"+
-		"\7h\2\2\u00fd\u00fe\7w\2\2\u00fe\u00ff\7p\2\2\u00ff\u0100\7e\2\2\u0100"+
-		"\u0101\7v\2\2\u0101\u0102\7k\2\2\u0102\u0103\7q\2\2\u0103\u0104\7p\2\2"+
-		"\u0104\"\3\2\2\2\u0105\u0106\7o\2\2\u0106\u0107\7c\2\2\u0107\u0108\7k"+
-		"\2\2\u0108\u0109\7p\2\2\u0109$\3\2\2\2\u010a\u010b\7v\2\2\u010b\u010c"+
-		"\7t\2\2\u010c\u010d\7w\2\2\u010d\u010e\7g\2\2\u010e&\3\2\2\2\u010f\u0110"+
-		"\7h\2\2\u0110\u0111\7c\2\2\u0111\u0112\7n\2\2\u0112\u0113\7u\2\2\u0113"+
-		"\u0114\7g\2\2\u0114(\3\2\2\2\u0115\u0116\7*\2\2\u0116*\3\2\2\2\u0117\u0118"+
-		"\7+\2\2\u0118,\3\2\2\2\u0119\u011a\7]\2\2\u011a.\3\2\2\2\u011b\u011c\7"+
-		"_\2\2\u011c\60\3\2\2\2\u011d\u011e\7}\2\2\u011e\62\3\2\2\2\u011f\u0120"+
-		"\7\177\2\2\u0120\64\3\2\2\2\u0121\u0122\7>\2\2\u0122\66\3\2\2\2\u0123"+
-		"\u0124\7>\2\2\u0124\u0125\7?\2\2\u01258\3\2\2\2\u0126\u0127\7@\2\2\u0127"+
-		":\3\2\2\2\u0128\u0129\7@\2\2\u0129\u012a\7?\2\2\u012a<\3\2\2\2\u012b\u012c"+
+		"\u00ac\7d\2\2\u00ac\u00ad\7t\2\2\u00ad\u00ae\7g\2\2\u00ae\u00af\7c\2\2"+
+		"\u00af\u00b0\7m\2\2\u00b0\4\3\2\2\2\u00b1\u00b2\7e\2\2\u00b2\u00b3\7q"+
+		"\2\2\u00b3\u00b4\7p\2\2\u00b4\u00b5\7v\2\2\u00b5\u00b6\7k\2\2\u00b6\u00b7"+
+		"\7p\2\2\u00b7\u00b8\7w\2\2\u00b8\u00b9\7g\2\2\u00b9\6\3\2\2\2\u00ba\u00bb"+
+		"\7g\2\2\u00bb\u00bc\7n\2\2\u00bc\u00bd\7u\2\2\u00bd\u00be\7g\2\2\u00be"+
+		"\b\3\2\2\2\u00bf\u00c0\7k\2\2\u00c0\u00c1\7h\2\2\u00c1\n\3\2\2\2\u00c2"+
+		"\u00c3\7x\2\2\u00c3\u00c4\7c\2\2\u00c4\u00c5\7t\2\2\u00c5\f\3\2\2\2\u00c6"+
+		"\u00c7\7k\2\2\u00c7\u00c8\7p\2\2\u00c8\u00c9\7v\2\2\u00c9\16\3\2\2\2\u00ca"+
+		"\u00cb\7d\2\2\u00cb\u00cc\7q\2\2\u00cc\u00cd\7q\2\2\u00cd\u00ce\7n\2\2"+
+		"\u00ce\u00cf\7g\2\2\u00cf\u00d0\7c\2\2\u00d0\u00d1\7p\2\2\u00d1\20\3\2"+
+		"\2\2\u00d2\u00d3\7u\2\2\u00d3\u00d4\7v\2\2\u00d4\u00d5\7t\2\2\u00d5\u00d6"+
+		"\7k\2\2\u00d6\u00d7\7p\2\2\u00d7\u00d8\7i\2\2\u00d8\22\3\2\2\2\u00d9\u00da"+
+		"\7t\2\2\u00da\u00db\7w\2\2\u00db\u00dc\7p\2\2\u00dc\u00dd\7g\2\2\u00dd"+
+		"\24\3\2\2\2\u00de\u00df\7c\2\2\u00df\u00e0\7t\2\2\u00e0\u00e1\7t\2\2\u00e1"+
+		"\u00e2\7c\2\2\u00e2\u00e3\7{\2\2\u00e3\26\3\2\2\2\u00e4\u00e5\7t\2\2\u00e5"+
+		"\u00e6\7g\2\2\u00e6\u00e7\7v\2\2\u00e7\u00e8\7w\2\2\u00e8\u00e9\7t\2\2"+
+		"\u00e9\u00ea\7p\2\2\u00ea\30\3\2\2\2\u00eb\u00ec\7x\2\2\u00ec\u00ed\7"+
+		"q\2\2\u00ed\u00ee\7k\2\2\u00ee\u00ef\7f\2\2\u00ef\32\3\2\2\2\u00f0\u00f1"+
+		"\7y\2\2\u00f1\u00f2\7j\2\2\u00f2\u00f3\7k\2\2\u00f3\u00f4\7n\2\2\u00f4"+
+		"\u00f5\7g\2\2\u00f5\34\3\2\2\2\u00f6\u00f7\7h\2\2\u00f7\u00f8\7w\2\2\u00f8"+
+		"\u00f9\7p\2\2\u00f9\u00fa\7e\2\2\u00fa\u00fb\7v\2\2\u00fb\u00fc\7k\2\2"+
+		"\u00fc\u00fd\7q\2\2\u00fd\u00fe\7p\2\2\u00fe\36\3\2\2\2\u00ff\u0100\7"+
+		"o\2\2\u0100\u0101\7c\2\2\u0101\u0102\7k\2\2\u0102\u0103\7p\2\2\u0103 "+
+		"\3\2\2\2\u0104\u0105\7v\2\2\u0105\u0106\7t\2\2\u0106\u0107\7w\2\2\u0107"+
+		"\u0108\7g\2\2\u0108\"\3\2\2\2\u0109\u010a\7h\2\2\u010a\u010b\7c\2\2\u010b"+
+		"\u010c\7n\2\2\u010c\u010d\7u\2\2\u010d\u010e\7g\2\2\u010e$\3\2\2\2\u010f"+
+		"\u0110\7*\2\2\u0110&\3\2\2\2\u0111\u0112\7+\2\2\u0112(\3\2\2\2\u0113\u0114"+
+		"\7]\2\2\u0114*\3\2\2\2\u0115\u0116\7_\2\2\u0116,\3\2\2\2\u0117\u0118\7"+
+		"}\2\2\u0118.\3\2\2\2\u0119\u011a\7\177\2\2\u011a\60\3\2\2\2\u011b\u011c"+
+		"\7?\2\2\u011c\u011d\7?\2\2\u011d\62\3\2\2\2\u011e\u011f\7#\2\2\u011f\u0120"+
+		"\7?\2\2\u0120\64\3\2\2\2\u0121\u0122\7>\2\2\u0122\66\3\2\2\2\u0123\u0124"+
+		"\7>\2\2\u0124\u0125\7?\2\2\u01258\3\2\2\2\u0126\u0127\7@\2\2\u0127:\3"+
+		"\2\2\2\u0128\u0129\7@\2\2\u0129\u012a\7?\2\2\u012a<\3\2\2\2\u012b\u012c"+
 		"\7>\2\2\u012c\u012d\7>\2\2\u012d>\3\2\2\2\u012e\u012f\7@\2\2\u012f\u0130"+
 		"\7@\2\2\u0130@\3\2\2\2\u0131\u0132\7-\2\2\u0132B\3\2\2\2\u0133\u0134\7"+
 		"-\2\2\u0134\u0135\7-\2\2\u0135D\3\2\2\2\u0136\u0137\7/\2\2\u0137F\3\2"+
@@ -269,7 +271,7 @@ public class cminusLexer extends Lexer {
 		"\3\2\2\2\u0185\u0182\3\2\2\2\u0185\u0183\3\2\2\2\u0185\u0184\3\2\2\2\u0186"+
 		"v\3\2\2\2\u0187\u0188\7\62\2\2\u0188\u018a\t\4\2\2\u0189\u018b\t\5\2\2"+
 		"\u018a\u0189\3\2\2\2\u018b\u018c\3\2\2\2\u018c\u018a\3\2\2\2\u018c\u018d"+
-		"\3\2\2\2\u018dx\3\2\2\2\u018e\u0191\5%\23\2\u018f\u0191\5\'\24\2\u0190"+
+		"\3\2\2\2\u018dx\3\2\2\2\u018e\u0191\5!\21\2\u018f\u0191\5#\22\2\u0190"+
 		"\u018e\3\2\2\2\u0190\u018f\3\2\2\2\u0191z\3\2\2\2\u0192\u0196\5\u0083"+
 		"B\2\u0193\u0195\5m\67\2\u0194\u0193\3\2\2\2\u0195\u0198\3\2\2\2\u0196"+
 		"\u0194\3\2\2\2\u0196\u0197\3\2\2\2\u0197|\3\2\2\2\u0198\u0196\3\2\2\2"+

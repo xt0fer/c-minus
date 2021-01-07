@@ -1,9 +1,21 @@
 main() {
- var x = int(0);
- var y = int(42);
- var z = int(0);
+// var x = int(0);
+// var y = int(42);
+// var z = int(0);
+//
+z = (y + x);
 
- z = (x + y);
+if (x > 0) {
+    x = y;
+    }
+
+while (z != y) {
+    if(x < 0) {
+        break;
+    }
+}
 }
 
-// function add() {}
+function add(int a, int b) int {
+    return a + b;
+}

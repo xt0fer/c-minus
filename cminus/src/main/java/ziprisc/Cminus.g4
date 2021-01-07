@@ -2,9 +2,22 @@
 grammar Cminus;
 
 program
-    : statementList 
+    : mainFunction functionList?
     ;
     
+functionList
+    : functionDefinition
+    | functionList functionDefinition
+    ;
+    
+mainFunction
+    : Main Paren paramList? Thesis typeSpecifier? compoundStatement
+    ;
+
+functionDefinition
+    :  Func Identifier Paren paramList Thesis typeSpecifier compoundStatement
+    ;
+
 statementList
     : statement
     | statementList statement
@@ -38,70 +51,62 @@ blockItemList
     ;
 
 blockItem
-    :   statement
-    |   declaration
+    :   statementList
+    |   declarationList
     ;
 
 declaration
-    : 'var' Identifier '=' typeSpecifier '(' Constant ')' ';'
+    : Var Identifier Assign typeSpecifier Paren Constant Thesis Semi
     ;
 
 expressionStatement
-    :   expression? ';'
+    :   expression Semi
     ;
 
 selectionStatement
-    :   'if' '(' expression ')' statement ('else' statement)?
+    :   If Paren expression Thesis compoundStatement (Else compoundStatement)?
     ;
 
 iterationStatement
-    :   While '(' expression ')' statement
+    :   While Paren expression Thesis compoundStatement
     ;
+
 jumpStatement
-    :   'continue' ';'
-    |   'break' ';'
-    |   'return' expression? ';'
+    :   'continue' Semi
+    |   'break' Semi
+    |   'return' expression? Semi
     ;
 
-unaryOperator
-    :   '&' | '*' | '+' | '-' | '~' | '!'
+// primaryExpression
+//     :   Identifier
+//     |   Constant
+//     |   StringLiteral+
+//     ;
+
+expression 
+    : Minus expression     
+    | expression mulop expression 
+    | expression addop expression 
+    | Paren expression Thesis
+    | Constant      
     ;
 
-primaryExpression
-    :   Identifier
-    |   Constant
-    |   StringLiteral+
-    |   '(' expression ')'
-    ;
+addop : Plus | Minus ;
 
-expression : '-' expression     
-   | expression mulop expression 
-   | expression addop expression 
-   | '(' expression ')'   
-   | Constant      
-   ;
-
-addop : '+' | '-' ;
-
-mulop : '*' | '/' | '%' ;
+mulop : Star | Div | Mod ;
 
 conditionalExpression
     :   logicalOrExpression ('?' expression ':' conditionalExpression)?
     ;
 
-assignmentExpression
-    :   conditionalExpression
-    |   DigitSequence // for
-    ;
+// assignmentExpression
+// //    :   conditionalExpression
+//     :  Identifier assignmentOperator assignmentExpression
+//     ;
 
 assignmentOperator
     :   '=' // | '*=' | '/=' | '%=' | '+=' | '-=' | '<<=' | '>>=' | '&=' | '^=' | '|='
     ;
-
-// expression
-//     :   assignmentExpression
-//     |   expression ',' assignmentExpression
-//     ;
 
 constantExpression
     :   conditionalExpression
@@ -169,15 +174,10 @@ typeSpecifier
     :   Void
     |   Rune
     |   Int
-    |   String
+    |   StringType
     |   Bool
     ;
 
-
-// NOT RIGHT
-functionDefinition
-    :  Func Identifier Paren paramList Thesis typeSpecifier compoundStatement
-    ;
 
 paramList
     : param
@@ -191,15 +191,17 @@ Break : 'break';
 Continue : 'continue';
 Else : 'else';
 If : 'if';
+Var : 'var';
 Int : 'int';
 Bool : 'boolean';
-String : 'string';
+StringType : 'string';
 Rune : 'rune';
 Array : 'array';
 Return : 'return';
 Void : 'void';
 While : 'while';
 Func : 'function';
+Main : 'main';
 True : 'true';
 False : 'false';
 
@@ -241,10 +243,7 @@ Comma : ',';
 Assign : '=';
 
 Identifier
-    :   IdentifierNondigit
-        (   IdentifierNondigit
-        |   Digit
-        )*
+    :   IdentifierNondigit ( IdentifierNondigit | Digit )*
     ;
     
 fragment

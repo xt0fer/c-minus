@@ -14,9 +14,13 @@ mainFunction
     : Main Paren paramList? Thesis typeSpecifier? compoundStatement
     ;
 
+fname : variable ;
+
 functionDefinition
-    :  Func Identifier Paren paramList Thesis typeSpecifier compoundStatement
+    :  Func fname Paren paramList Thesis typeSpecifier compoundStatement
     ;
+functionCall
+    : fname Paren variable (Comma variable)* Thesis;
 
 statementList
     : statement
@@ -30,38 +34,48 @@ declarationList
 
 statement
     :   compoundStatement
-    |   expressionStatement
+//    |   expressionStatement
     |   selectionStatement
     |   iterationStatement
     |   jumpStatement
     |   assignmentStatement
     ;
 
+variable : Identifier ;
+
 assignmentStatement
-    : Identifier Assign expressionStatement
+    : variable assignmentOperator expression Semi
+    ;
+
+assignmentOperator
+    :   Assign // | '*=' | '/=' | '%=' | '+=' | '-=' | '<<=' | '>>=' | '&=' | '^=' | '|='
     ;
 
 compoundStatement
-    :   '{' blockItemList? '}'
+    :   LeftBrace declarationList? statementList? RightBrace
     ;
 
-blockItemList
-    :   blockItem
-    |   blockItemList blockItem
-    ;
+// compoundStatement
+//     :   '{' blockItemList? '}'
+//     ;
 
-blockItem
-    :   statementList
-    |   declarationList
-    ;
+// blockItemList
+//     :   blockItem
+//     |   blockItemList blockItem
+//     ;
+
+// blockItem
+//     :   statementList
+//     |   declarationList
+//     ;
 
 declaration
-    : Var Identifier Assign typeSpecifier Paren Constant Thesis Semi
+    : Var variable Assign typeSpecifier Paren Constant Thesis Semi
     ;
 
-expressionStatement
-    :   expression Semi
-    ;
+// expressionStatement
+//     :   expression? Semi
+//     ;
 
 selectionStatement
     :   If Paren expression Thesis compoundStatement (Else compoundStatement)?
@@ -84,33 +98,35 @@ jumpStatement
 //     ;
 
 expression 
-    : Minus expression     
+    : functionCall
+    | Minus expression     
+    | Paren expression Thesis
+//    | expression Caret expression
     | expression mulop expression 
     | expression addop expression 
-    | Paren expression Thesis
-    | Constant      
+    | Constant
+    | variable
+    | expression relop expression
     ;
 
 addop : Plus | Minus ;
 
 mulop : Star | Div | Mod ;
-
-conditionalExpression
-    :   logicalOrExpression ('?' expression ':' conditionalExpression)?
+relop : EqualEqual
+    | NotEqual
+    | Less
+    | LessEqual
+    | Greater
+    | GreaterEqual
     ;
 
-// assignmentExpression
-// //    :   conditionalExpression
-//     :  Identifier assignmentOperator assignmentExpression
+// conditionalExpression
+//     :   logicalOrExpression ('?' expression ':' conditionalExpression)?
 //     ;
 
-assignmentOperator
-    :   '=' // | '*=' | '/=' | '%=' | '+=' | '-=' | '<<=' | '>>=' | '&=' | '^=' | '|='
-    ;
-
-constantExpression
-    :   conditionalExpression
-    ;
+// constantExpression
+//     :   conditionalExpression
+//     ;
 
 // multiplicativeExpression
 //     :   multiplicativeExpression
@@ -125,50 +141,49 @@ constantExpression
 //     |   additiveExpression '-' multiplicativeExpression
 //     ;
 
-shiftExpression
-    :   expression
-    |   shiftExpression '<<' expression
-    |   shiftExpression '>>' expression
-    ;
+// shiftExpression
+//     :   expression LeftShift shiftExpression
+//     |   expression RightShift shiftExpression
+//     ;
 
-relationalExpression
-    :   shiftExpression
-    |   relationalExpression '<' shiftExpression
-    |   relationalExpression '>' shiftExpression
-    |   relationalExpression '<=' shiftExpression
-    |   relationalExpression '>=' shiftExpression
-    ;
+// relationalExpression
+//     :   shiftExpression
+//     |   relationalExpression Greater shiftExpression
+//     |   relationalExpression Less shiftExpression
+//     |   relationalExpression LessEqual shiftExpression
+//     |   relationalExpression GreaterEqual shiftExpression
+//     ;
 
-equalityExpression
-    :   relationalExpression
-    |   equalityExpression '==' relationalExpression
-    |   equalityExpression '!=' relationalExpression
-    ;
+// equalityExpression
+//     :   relationalExpression
+//     |   equalityExpression EqualEqual relationalExpression
+//     |   equalityExpression NotEqual relationalExpression
+//     ;
 
-andExpression
-    :   equalityExpression
-    |   andExpression '&' equalityExpression
-    ;
+// andExpression
+//     :   equalityExpression
+//     |   andExpression And equalityExpression
+//     ;
 
-exclusiveOrExpression
-    :   andExpression
-    |   exclusiveOrExpression '^' andExpression
-    ;
+// exclusiveOrExpression
+//     :   andExpression
+//     |   exclusiveOrExpression Caret andExpression
+//     ;
 
-inclusiveOrExpression
-    :   exclusiveOrExpression
-    |   inclusiveOrExpression '|' exclusiveOrExpression
-    ;
+// inclusiveOrExpression
+//     :   exclusiveOrExpression
+//     |   inclusiveOrExpression Or exclusiveOrExpression
+//     ;
 
-logicalAndExpression
-    :   inclusiveOrExpression
-    |   logicalAndExpression '&&' inclusiveOrExpression
-    ;
+// logicalAndExpression
+//     :   inclusiveOrExpression
+//     |   logicalAndExpression AndAnd inclusiveOrExpression
+//     ;
 
-logicalOrExpression
-    :   logicalAndExpression
-    |   logicalOrExpression '||' logicalAndExpression
-    ;
+// logicalOrExpression
+//     :   logicalAndExpression
+//     |   logicalOrExpression OrOr logicalAndExpression
+//     ;
 
 typeSpecifier
     :   Void
@@ -184,7 +199,7 @@ paramList
     | paramList param
     ;
 param
-    : Comma? typeSpecifier Identifier 
+    : Comma? typeSpecifier variable 
     ;
 
 Break : 'break';
@@ -212,6 +227,8 @@ RightBracket : ']';
 LeftBrace : '{';
 RightBrace : '}';
 
+EqualEqual : '==';
+NotEqual : '!=';
 Less : '<';
 LessEqual : '<=';
 Greater : '>';

@@ -17,8 +17,14 @@ type cminusListener interface {
 	// EnterMainFunction is called when entering the mainFunction production.
 	EnterMainFunction(c *MainFunctionContext)
 
+	// EnterFname is called when entering the fname production.
+	EnterFname(c *FnameContext)
+
 	// EnterFunctionDefinition is called when entering the functionDefinition production.
 	EnterFunctionDefinition(c *FunctionDefinitionContext)
+
+	// EnterFunctionCall is called when entering the functionCall production.
+	EnterFunctionCall(c *FunctionCallContext)
 
 	// EnterStatementList is called when entering the statementList production.
 	EnterStatementList(c *StatementListContext)
@@ -29,23 +35,20 @@ type cminusListener interface {
 	// EnterStatement is called when entering the statement production.
 	EnterStatement(c *StatementContext)
 
+	// EnterVariable is called when entering the variable production.
+	EnterVariable(c *VariableContext)
+
 	// EnterAssignmentStatement is called when entering the assignmentStatement production.
 	EnterAssignmentStatement(c *AssignmentStatementContext)
+
+	// EnterAssignmentOperator is called when entering the assignmentOperator production.
+	EnterAssignmentOperator(c *AssignmentOperatorContext)
 
 	// EnterCompoundStatement is called when entering the compoundStatement production.
 	EnterCompoundStatement(c *CompoundStatementContext)
 
-	// EnterBlockItemList is called when entering the blockItemList production.
-	EnterBlockItemList(c *BlockItemListContext)
-
-	// EnterBlockItem is called when entering the blockItem production.
-	EnterBlockItem(c *BlockItemContext)
-
 	// EnterDeclaration is called when entering the declaration production.
 	EnterDeclaration(c *DeclarationContext)
-
-	// EnterExpressionStatement is called when entering the expressionStatement production.
-	EnterExpressionStatement(c *ExpressionStatementContext)
 
 	// EnterSelectionStatement is called when entering the selectionStatement production.
 	EnterSelectionStatement(c *SelectionStatementContext)
@@ -65,38 +68,8 @@ type cminusListener interface {
 	// EnterMulop is called when entering the mulop production.
 	EnterMulop(c *MulopContext)
 
-	// EnterConditionalExpression is called when entering the conditionalExpression production.
-	EnterConditionalExpression(c *ConditionalExpressionContext)
-
-	// EnterAssignmentOperator is called when entering the assignmentOperator production.
-	EnterAssignmentOperator(c *AssignmentOperatorContext)
-
-	// EnterConstantExpression is called when entering the constantExpression production.
-	EnterConstantExpression(c *ConstantExpressionContext)
-
-	// EnterShiftExpression is called when entering the shiftExpression production.
-	EnterShiftExpression(c *ShiftExpressionContext)
-
-	// EnterRelationalExpression is called when entering the relationalExpression production.
-	EnterRelationalExpression(c *RelationalExpressionContext)
-
-	// EnterEqualityExpression is called when entering the equalityExpression production.
-	EnterEqualityExpression(c *EqualityExpressionContext)
-
-	// EnterAndExpression is called when entering the andExpression production.
-	EnterAndExpression(c *AndExpressionContext)
-
-	// EnterExclusiveOrExpression is called when entering the exclusiveOrExpression production.
-	EnterExclusiveOrExpression(c *ExclusiveOrExpressionContext)
-
-	// EnterInclusiveOrExpression is called when entering the inclusiveOrExpression production.
-	EnterInclusiveOrExpression(c *InclusiveOrExpressionContext)
-
-	// EnterLogicalAndExpression is called when entering the logicalAndExpression production.
-	EnterLogicalAndExpression(c *LogicalAndExpressionContext)
-
-	// EnterLogicalOrExpression is called when entering the logicalOrExpression production.
-	EnterLogicalOrExpression(c *LogicalOrExpressionContext)
+	// EnterRelop is called when entering the relop production.
+	EnterRelop(c *RelopContext)
 
 	// EnterTypeSpecifier is called when entering the typeSpecifier production.
 	EnterTypeSpecifier(c *TypeSpecifierContext)
@@ -116,8 +89,14 @@ type cminusListener interface {
 	// ExitMainFunction is called when exiting the mainFunction production.
 	ExitMainFunction(c *MainFunctionContext)
 
+	// ExitFname is called when exiting the fname production.
+	ExitFname(c *FnameContext)
+
 	// ExitFunctionDefinition is called when exiting the functionDefinition production.
 	ExitFunctionDefinition(c *FunctionDefinitionContext)
+
+	// ExitFunctionCall is called when exiting the functionCall production.
+	ExitFunctionCall(c *FunctionCallContext)
 
 	// ExitStatementList is called when exiting the statementList production.
 	ExitStatementList(c *StatementListContext)
@@ -128,23 +107,20 @@ type cminusListener interface {
 	// ExitStatement is called when exiting the statement production.
 	ExitStatement(c *StatementContext)
 
+	// ExitVariable is called when exiting the variable production.
+	ExitVariable(c *VariableContext)
+
 	// ExitAssignmentStatement is called when exiting the assignmentStatement production.
 	ExitAssignmentStatement(c *AssignmentStatementContext)
+
+	// ExitAssignmentOperator is called when exiting the assignmentOperator production.
+	ExitAssignmentOperator(c *AssignmentOperatorContext)
 
 	// ExitCompoundStatement is called when exiting the compoundStatement production.
 	ExitCompoundStatement(c *CompoundStatementContext)
 
-	// ExitBlockItemList is called when exiting the blockItemList production.
-	ExitBlockItemList(c *BlockItemListContext)
-
-	// ExitBlockItem is called when exiting the blockItem production.
-	ExitBlockItem(c *BlockItemContext)
-
 	// ExitDeclaration is called when exiting the declaration production.
 	ExitDeclaration(c *DeclarationContext)
-
-	// ExitExpressionStatement is called when exiting the expressionStatement production.
-	ExitExpressionStatement(c *ExpressionStatementContext)
 
 	// ExitSelectionStatement is called when exiting the selectionStatement production.
 	ExitSelectionStatement(c *SelectionStatementContext)
@@ -164,38 +140,8 @@ type cminusListener interface {
 	// ExitMulop is called when exiting the mulop production.
 	ExitMulop(c *MulopContext)
 
-	// ExitConditionalExpression is called when exiting the conditionalExpression production.
-	ExitConditionalExpression(c *ConditionalExpressionContext)
-
-	// ExitAssignmentOperator is called when exiting the assignmentOperator production.
-	ExitAssignmentOperator(c *AssignmentOperatorContext)
-
-	// ExitConstantExpression is called when exiting the constantExpression production.
-	ExitConstantExpression(c *ConstantExpressionContext)
-
-	// ExitShiftExpression is called when exiting the shiftExpression production.
-	ExitShiftExpression(c *ShiftExpressionContext)
-
-	// ExitRelationalExpression is called when exiting the relationalExpression production.
-	ExitRelationalExpression(c *RelationalExpressionContext)
-
-	// ExitEqualityExpression is called when exiting the equalityExpression production.
-	ExitEqualityExpression(c *EqualityExpressionContext)
-
-	// ExitAndExpression is called when exiting the andExpression production.
-	ExitAndExpression(c *AndExpressionContext)
-
-	// ExitExclusiveOrExpression is called when exiting the exclusiveOrExpression production.
-	ExitExclusiveOrExpression(c *ExclusiveOrExpressionContext)
-
-	// ExitInclusiveOrExpression is called when exiting the inclusiveOrExpression production.
-	ExitInclusiveOrExpression(c *InclusiveOrExpressionContext)
-
-	// ExitLogicalAndExpression is called when exiting the logicalAndExpression production.
-	ExitLogicalAndExpression(c *LogicalAndExpressionContext)
-
-	// ExitLogicalOrExpression is called when exiting the logicalOrExpression production.
-	ExitLogicalOrExpression(c *LogicalOrExpressionContext)
+	// ExitRelop is called when exiting the relop production.
+	ExitRelop(c *RelopContext)
 
 	// ExitTypeSpecifier is called when exiting the typeSpecifier production.
 	ExitTypeSpecifier(c *TypeSpecifierContext)

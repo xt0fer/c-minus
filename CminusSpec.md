@@ -48,7 +48,7 @@ literals are a run of Runes delimited by double-quotes
 ### Rune (Character) 
 
 Rune is a 32-bit char
-var weird = rune('x') // var also works
+var weird = rune('x');
 
 literals are either UTF-8 or hex literals
 
