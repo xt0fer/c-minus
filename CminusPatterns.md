@@ -110,6 +110,9 @@ name:
 // fs: "\n%s:\n.WD %d\n", name, constantInt
 ```
 
+first word is string length, second is address of where the string is stored.
+string storage could all be in some segment somewhere. right now, it'll be laid into the local variables of where it is declared. (a function or main())
+
 ### Rune variable declaration
 
 ```
@@ -138,6 +141,11 @@ LD t1 z
 ADD t0 t0 t1
 ST t0 x
 ```
+
+### main() function
+
+there are no global variables in cminus, only local vars in main() and in functions.
+it forces the programmer to pass by value anything they might need.
 
 
 
