@@ -11,7 +11,7 @@ functionList
     ;
     
 mainFunction
-    : Main Paren paramList? Thesis typeSpecifier? compoundStatement
+    : Main Paren Thesis compoundStatement
     ;
 
 fname : variable ;
@@ -55,27 +55,9 @@ compoundStatement
     :   LeftBrace declarationList? statementList? RightBrace
     ;
 
-// compoundStatement
-//     :   '{' blockItemList? '}'
-//     ;
-
-// blockItemList
-//     :   blockItem
-//     |   blockItemList blockItem
-//     ;
-
-// blockItem
-//     :   statementList
-//     |   declarationList
-//     ;
-
 declaration
     : Var variable Assign typeSpecifier Paren Constant Thesis Semi
     ;
-
-// expressionStatement
-//     :   expression? Semi
-//     ;
 
 selectionStatement
     :   If Paren expression Thesis compoundStatement (Else compoundStatement)?
@@ -90,12 +72,6 @@ jumpStatement
     |   'break' Semi
     |   'return' expression? Semi
     ;
-
-// primaryExpression
-//     :   Identifier
-//     |   Constant
-//     |   StringLiteral+
-//     ;
 
 expression 
     : functionCall
@@ -120,79 +96,13 @@ relop : EqualEqual
     | GreaterEqual
     ;
 
-// conditionalExpression
-//     :   logicalOrExpression ('?' expression ':' conditionalExpression)?
-//     ;
-
-// constantExpression
-//     :   conditionalExpression
-//     ;
-
-// multiplicativeExpression
-//     :   multiplicativeExpression
-//     |   multiplicativeExpression '*' multiplicativeExpression
-//     |   multiplicativeExpression '/' multiplicativeExpression
-//     |   multiplicativeExpression '%' multiplicativeExpression
-//     ;
-
-// additiveExpression
-//     :   multiplicativeExpression
-//     |   additiveExpression '+' multiplicativeExpression
-//     |   additiveExpression '-' multiplicativeExpression
-//     ;
-
-// shiftExpression
-//     :   expression LeftShift shiftExpression
-//     |   expression RightShift shiftExpression
-//     ;
-
-// relationalExpression
-//     :   shiftExpression
-//     |   relationalExpression Greater shiftExpression
-//     |   relationalExpression Less shiftExpression
-//     |   relationalExpression LessEqual shiftExpression
-//     |   relationalExpression GreaterEqual shiftExpression
-//     ;
-
-// equalityExpression
-//     :   relationalExpression
-//     |   equalityExpression EqualEqual relationalExpression
-//     |   equalityExpression NotEqual relationalExpression
-//     ;
-
-// andExpression
-//     :   equalityExpression
-//     |   andExpression And equalityExpression
-//     ;
-
-// exclusiveOrExpression
-//     :   andExpression
-//     |   exclusiveOrExpression Caret andExpression
-//     ;
-
-// inclusiveOrExpression
-//     :   exclusiveOrExpression
-//     |   inclusiveOrExpression Or exclusiveOrExpression
-//     ;
-
-// logicalAndExpression
-//     :   inclusiveOrExpression
-//     |   logicalAndExpression AndAnd inclusiveOrExpression
-//     ;
-
-// logicalOrExpression
-//     :   logicalAndExpression
-//     |   logicalOrExpression OrOr logicalAndExpression
-//     ;
-
 typeSpecifier
-    :   Void
-    |   Rune
-    |   Int
-    |   StringType
-    |   Bool
+    :   Int
+    // |   Rune
+    // |   Void
+    // |   StringType
+    // |   Bool
     ;
-
 
 paramList
     : param
